@@ -49,6 +49,8 @@ float readMCP9700Temp();
 float readDHT22Hum();
 float readDHT22Temp();
 uint16_t readVcc();
+uint8_t getVccLevel();
+
 /************************************/
 /********* GLOBAL VARIABLES *********/
 /************************************/
@@ -102,6 +104,20 @@ float readMCP9700Temp() {
   Serial.println(temp);
   #endif
   return temp;
+}
+
+/**
+ * Get the percentage of power in the battery
+ */
+uint8_t getVccLevel() {
+  static const float full_battery_v = 3169.0;
+  float level = readVcc() / full_battery_v;
+  uint8_t percent = level * 100;
+  #if DEBUG
+  Serial.print("Battery state = ");
+  Serial.println(percent);
+  #endif
+  return percent;
 }
 
 /**
