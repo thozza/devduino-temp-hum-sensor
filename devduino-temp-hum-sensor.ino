@@ -23,11 +23,11 @@
  * nRF24L01+ spec - https://www.sparkfun.com/datasheets/Wireless/Nordic/nRF24L01P_Product_Specification_1_0.pdf
  */
 
-#include <MyConfig.h>
 #include <MyMessage.h>
-#include <Version.h>
 #include <MySensor.h>
+
 #include <SPI.h>
+#include <DHT.h>
 #include <stdint.h>
 
 #define DEBUG 1
@@ -42,14 +42,21 @@
 #define RF24_CS_pin 7
 #define MCP9700_pin A3
 
-
 /*****************************/
 /********* FUNCTIONS *********/
 /*****************************/
 float readMCP9700Temp();
+float readDHT22Hum();
+float readDHT22Temp();
 uint16_t readVcc();
+/************************************/
+/********* GLOBAL VARIABLES *********/
+/************************************/
+DHT dht22;
 
-
+/**********************************/
+/********* IMPLEMENTATION *********/
+/**********************************/
 void setup() {
   // put your setup code here, to run once:
 
@@ -57,7 +64,30 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
+}
 
+/**
+ * Read the humidity from DHT22
+ */
+float readDHT22Hum() {
+  float hum = dht22.getHumidity();
+  #if DEBUG
+  Serial.print("Read Hum from DHT22 = ");
+  Serial.println(hum);
+  #endif
+  return hum;
+}
+
+/**
+ * Read the temperature from DHT22
+ */
+float readDHT22Temp() {
+  float temp = dht22.getTemperature();
+  #if DEBUG
+  Serial.print("Read Temp from DHT22 = ");
+  Serial.println(temp);
+  #endif
+  return temp;
 }
 
 /**
