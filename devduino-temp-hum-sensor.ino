@@ -31,7 +31,12 @@
 #include <stdint.h>
 
 #define DEBUG 1
+#define SLEEP_TIME 5000
+#define NODE_ID 1
 
+#define SENSOR_DHT22_HUM 0
+#define SENSOR_DHT22_TEMP 1
+#define SENSOR_MCP9700_TEMP 2
 
 /***********************************/
 /********* PIN DEFINITIONS *********/
@@ -54,18 +59,34 @@ uint8_t getVccLevel();
 /************************************/
 /********* GLOBAL VARIABLES *********/
 /************************************/
+MySensor node(RF24_CE_pin, RF24_CS_pin);
+MyMessage msgDHT22Hum(SENSOR_DHT22_HUM, S_HUM);
+MyMessage msgDHT22Temp(SENSOR_DHT22_TEMP, S_TEMP);
+MyMessage msgMCP9700Temp(SENSOR_MCP9700_TEMP, S_TEMP);
 DHT dht22;
 
 /**********************************/
 /********* IMPLEMENTATION *********/
 /**********************************/
 void setup() {
-  // put your setup code here, to run once:
+  node.begin(NULL /* inc msg callback */, NODE_ID);
+  dht22.setup(DHT22_pin);
 
+  //node.sendSketchInfo("devduino-temp-hum-sensor", "0.1");
+
+  node.present(SENSOR_DHT22_HUM, S_HUM);
+  node.present(SENSOR_DHT22_TEMP, S_TEMP);
+  node.present(SENSOR_MCP9700_TEMP, S_TEMP);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  node.sendBatteryLevel(getVccLevel());
+
+  node.send(msgDHT22Hum.set(readDHT22Hum(), 2));
+  node.send(msgDHT22Temp.set(readDHT22Temp(), 2));
+  node.send(msgMCP9700Temp.set(readMCP9700Temp(), 2));
+
+  node.sleep(SLEEP_TIME);
 }
 
 /**
