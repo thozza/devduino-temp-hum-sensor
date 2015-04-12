@@ -1,7 +1,7 @@
 /*
  * devduino-temp-hum-sensor.ino - Firmware for DevDuino v2.0 based temperature and humidity sensor Node with nRF24L01+ module
  *
- * Copyright 2014 Tomas Hozza <thozza@gmail.com>
+ * Copyright 2014-2015 Tomas Hozza <thozza@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
