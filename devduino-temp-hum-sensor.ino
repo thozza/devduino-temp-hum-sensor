@@ -24,6 +24,8 @@
  * nRF24L01+ spec - https://www.sparkfun.com/datasheets/Wireless/Nordic/nRF24L01P_Product_Specification_1_0.pdf
  */
 
+#include <MyTransportNRF24.h>
+#include <MyHwATMega328.h>
 #include <MyMessage.h>
 #include <MySensor.h>
 
@@ -60,7 +62,10 @@ uint8_t getVccLevel();
 /************************************/
 /********* GLOBAL VARIABLES *********/
 /************************************/
-MySensor node(RF24_CE_pin, RF24_CS_pin);
+MyHwATMega328 hw;
+MyTransportNRF24 transport(RF24_CE_PIN, RF24_CS_PIN);
+
+MySensor node(transport, hw);
 MyMessage msgDHT22Hum(SENSOR_DHT22_HUM, S_HUM);
 MyMessage msgDHT22Temp(SENSOR_DHT22_TEMP, S_TEMP);
 MyMessage msgMCP9700Temp(SENSOR_MCP9700_TEMP, S_TEMP);
