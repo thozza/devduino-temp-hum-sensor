@@ -19,6 +19,7 @@
  * Tomas Hozza <thozza@gmail.com>
  *
  * MySensors library - http://www.mysensors.org/
+ * DHT library - https://github.com/markruys/arduino-DHT
  * DevDuino v2.0 - http://www.seeedstudio.com/wiki/DevDuino_Sensor_Node_V2.0_(ATmega_328)
  * nRF24L01+ spec - https://www.sparkfun.com/datasheets/Wireless/Nordic/nRF24L01P_Product_Specification_1_0.pdf
  */
