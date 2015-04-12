@@ -73,7 +73,7 @@ void setup() {
   node.begin(NULL /* inc msg callback */, NODE_ID);
   dht22.setup(DHT22_pin);
 
-  //node.sendSketchInfo("devduino-temp-hum-sensor", "0.1");
+  node.sendSketchInfo("devduino-temp-hum-sensor", "0.1");
 
   node.present(SENSOR_DHT22_HUM, S_HUM);
   node.present(SENSOR_DHT22_TEMP, S_TEMP);
@@ -96,7 +96,7 @@ void loop() {
 float readDHT22Hum() {
   float hum = dht22.getHumidity();
   #if DEBUG
-  Serial.print("Read Hum from DHT22 = ");
+  Serial.print(F("Read Hum from DHT22 = "));
   Serial.println(hum);
   #endif
   return hum;
@@ -108,7 +108,7 @@ float readDHT22Hum() {
 float readDHT22Temp() {
   float temp = dht22.getTemperature();
   #if DEBUG
-  Serial.print("Read Temp from DHT22 = ");
+  Serial.print(F("Read Temp from DHT22 = "));
   Serial.println(temp);
   #endif
   return temp;
@@ -122,7 +122,7 @@ float readMCP9700Temp() {
   temp = temp - 0.5;
   temp = temp / 0.01;
   #if DEBUG
-  Serial.print("Read Temp from MCP9700 = ");
+  Serial.print(F("Read Temp from MCP9700 = "));
   Serial.println(temp);
   #endif
   return temp;
@@ -136,7 +136,7 @@ uint8_t getVccLevel() {
   float level = readVcc() / full_battery_v;
   uint8_t percent = level * 100;
   #if DEBUG
-  Serial.print("Battery state = ");
+  Serial.print(F("Battery state = "));
   Serial.println(percent);
   #endif
   return percent;
@@ -172,7 +172,7 @@ uint16_t readVcc() {
   result = 1125300L / result; // Calculate Vcc (in mV); 1125300 = 1.1*1023*1000
   
   #if DEBUG
-  Serial.print("Read Vcc = ");
+  Serial.print(F("Read Vcc = "));
   Serial.println(result);
   #endif
   
