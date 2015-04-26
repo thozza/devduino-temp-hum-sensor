@@ -63,7 +63,7 @@ uint8_t getVccLevel();
 /********* GLOBAL VARIABLES *********/
 /************************************/
 MyHwATMega328 hw;
-MyTransportNRF24 transport(RF24_CE_PIN, RF24_CS_PIN);
+MyTransportNRF24 transport(RF24_CE_pin, RF24_CS_pin);
 
 MySensor node(transport, hw);
 MyMessage msgDHT22Hum(SENSOR_DHT22_HUM, S_HUM);
