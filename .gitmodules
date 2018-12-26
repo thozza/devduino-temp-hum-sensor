@@ -1,6 +1,0 @@
-[submodule "MySensors-upstream-git"]
-	path = MySensors-upstream-git
-	url = https://github.com/mysensors/Arduino.git
-[submodule "lib/arduino-DHT"]
-	path = lib/arduino-DHT
-	url = https://github.com/markruys/arduino-DHT.git
