@@ -63,11 +63,11 @@
 //#define MY_NODE_ID 1
 //#define MY_PARENT_NODE_ID 0
 
-#define MY_DEFAULT_LED_BLINK_PERIOD 300
+//#define MY_DEFAULT_LED_BLINK_PERIOD 300
 
-#define MY_DEFAULT_ERR_LED_PIN 9  // Error led pin - Built in LED on board
-#define MY_DEFAULT_RX_LED_PIN  A6  // Receive led pin - Not connected / used
-#define MY_DEFAULT_TX_LED_PIN  A7  // Transmit led pin - Not connected / used
+//#define MY_DEFAULT_ERR_LED_PIN 9  // Error led pin - Built in LED on board
+//#define MY_DEFAULT_RX_LED_PIN  A6  // Receive led pin - Not connected / used
+//#define MY_DEFAULT_TX_LED_PIN  A7  // Transmit led pin - Not connected / used
 
 #define MY_SPLASH_SCREEN_DISABLED
 
