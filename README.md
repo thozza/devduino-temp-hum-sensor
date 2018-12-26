@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/thozza/devduino-temp-hum-sensor.svg?branch=master)](https://travis-ci.org/thozza/devduino-temp-hum-sensor)
 # Temperature and Humidity sensor based on Devduino v2.0
 
 This is a simple sketch for temperature and humidity wireless sensor
